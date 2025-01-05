@@ -20,6 +20,11 @@
 
 /* Begin PBXFileReference section */
 		C8442A972D2A91B9004D91CF /* threads */ = {isa = PBXFileReference; explicitFileType = "compiled.mach-o.executable"; includeInIndex = 0; path = threads; sourceTree = BUILT_PRODUCTS_DIR; };
+		C8513B5D2D2AC195000F3A93 /* message.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = message.hpp; sourceTree = "<group>"; };
+		C8513B5E2D2AC195000F3A93 /* threadBody.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threadBody.hpp; sourceTree = "<group>"; };
+		C8513B5F2D2AC195000F3A93 /* threadPtr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threadPtr.hpp; sourceTree = "<group>"; };
+		C8513B602D2AC195000F3A93 /* threads.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threads.hpp; sourceTree = "<group>"; };
+		C8C350C72D2A931C00E2B38F /* threadsDefs.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threadsDefs.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -36,6 +41,8 @@
 		C8442A8E2D2A91B9004D91CF = {
 			isa = PBXGroup;
 			children = (
+				C8C350C82D2A931C00E2B38F /* include */,
+				C8C350C92D2A931C00E2B38F /* src */,
 				C8442A982D2A91B9004D91CF /* Products */,
 			);
 			sourceTree = "<group>";
@@ -47,6 +54,27 @@
 			);
 			name = Products;
 			sourceTree = "<group>";
+		};
+		C8C350C82D2A931C00E2B38F /* include */ = {
+			isa = PBXGroup;
+			children = (
+				C8513B5D2D2AC195000F3A93 /* message.hpp */,
+				C8513B5E2D2AC195000F3A93 /* threadBody.hpp */,
+				C8513B5F2D2AC195000F3A93 /* threadPtr.hpp */,
+				C8513B602D2AC195000F3A93 /* threads.hpp */,
+				C8C350C72D2A931C00E2B38F /* threadsDefs.hpp */,
+			);
+			name = include;
+			path = /Users/pitv/Documents/XCODE/plants_watersystem/threads/include;
+			sourceTree = "<absolute>";
+		};
+		C8C350C92D2A931C00E2B38F /* src */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = src;
+			path = /Users/pitv/Documents/XCODE/plants_watersystem/threads/src;
+			sourceTree = "<absolute>";
 		};
 /* End PBXGroup section */
 

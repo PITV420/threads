@@ -1,6 +1,6 @@
 //
 //  threadsDefs.hpp
-//  plants_watersystem
+//  threads
 //
 //  Created by Piotr Cieślik on 17/12/24.
 //
@@ -8,13 +8,18 @@
 #ifndef threadsDef_h
 #define threadsDef_h
 
+#include <stdint.h>
+#include <stdlib.h>
+
 #undef THREADS_GCC_COMPILER
 #undef THREADS_CLANG_COMPILER
 #undef THREADS_MSVC_COMPILER
 #undef THREADS_CW_COMPILER
 #undef THREADS_STM_COMPILER
 
-#if defined(__GNUC__) || defined(__GNUG__)
+#if (defined(__ICCARM__) || defined(__CC_ARM)) && defined(__GNUC__)
+    #define THREADS_STM_COMPILER 1
+#elif defined(__GNUC__) || defined(__GNUG__)
     #define THREADS_GCC_COMPILER 1
 #elif defined(_MSC_VER)
     #define THREADS_MSVC_COMPILER 1
@@ -22,8 +27,6 @@
     #define THREADS_CLANG_COMPILER 1
 #elif defined(__MWERKS__)
     #define THREADS_CW_COMPILER 1
-#elif defined(TARGET_STM)
-    #define THREADS_STM_COMPILER 1
 #else
     #error "Unknown compiler!"
 #endif
@@ -42,12 +45,37 @@
     #define THREADS_LINUXOS 1
 #elif defined(__FreeBSD__)
     #define THREADS_FREEBSDOS 1
-#elif defined(TARGET_STM)
+#elif (defined(__ICCARM__) || defined(__CC_ARM)) && defined(__GNUC__)
     #define THREADS_STM32OS 1
 #else
     #error "Unknown OS!"
 #endif
 
+#if defined(THREADS_WINOS)
+#elif defined(THREADS_MACOS)
+#include <pthread.h>
+#elif defined(THREADS_LINUXOS)
+#elif defined(THREADS_FREEBSDOS)
+#elif defined(THREADS_STM32OS)
+#endif
 
+namespace Threads
+{
+    typedef void* ThreadHandle_t;
+
+#if defined(THREADS_WINOS)
+
+#elif defined(THREADS_MACOS)
+	typedef pthread_mutex_t native_mutex_t;
+	typedef pthread_cond_t native_cond_t;
+	typedef pthread_t native_thread_handle_t;
+	typedef pthread_key_t native_tls_key_t;
+#elif defined(THREADS_LINUXOS)
+#elif defined(THREADS_FREEBSDOS)
+#elif defined(THREADS_STM32OS)
+#else
+    #error "Unknown OS!"
+#endif
+}
 
 #endif /* threadsDef_h */
