@@ -16,15 +16,15 @@ namespace Threads
     class Message
 	{
 	private:
-		int32_t iMessageCode;
+		int iMessageCode;
 		const char *iName;
 
 	public:
-		explicit Message(int32_t messageCode, const char *messageName = nullptr);
+		explicit Message(int messageCode, const char *messageName = nullptr);
 		virtual ~Message();	
-		virtual int32_t MessageReceived();
+		virtual int MessageReceived();
 		virtual void MessageCompleted(bool received);
-		inline int32_t GetMessageCode() const;
+		inline int GetMessageCode() const;
 		inline const char* GetName() const;
 		virtual bool IsExceptionMessage() const;
 	};

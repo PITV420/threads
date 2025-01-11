@@ -29,7 +29,7 @@ namespace Threads
 		virtual int Size() = 0;
 		virtual bool MessageIsInQueue(int64_t messageNumber) = 0;
 		virtual bool Insert(Message* msg, bool sendToAllThreadsFlag, int64_t messageNumber) = 0;
-		virtual int32_t RemoveNext(Message** msg, int64_t* messageNumber, bool* sendToAllThreadsFlag, Message** msg2, int64_t* messageNumber2, bool* sendToAllThreadsFlag2, int64_t waitTime, int nativeObjectCount, ThreadHandle_t *objectList, MessageFilterRtn filter) = 0;
+		virtual int RemoveNext(Message** msg, int64_t* messageNumber, bool* sendToAllThreadsFlag, Message** msg2, int64_t* messageNumber2, bool* sendToAllThreadsFlag2, int64_t waitTime, int nativeObjectCount, ThreadHandle_t *objectList, MessageFilterRtn filter) = 0;
 		virtual void ClearSendToAllMode() = 0;
 		virtual bool AllowsMultipleReaders() const;
 		virtual bool AllowsMultipleWriters() const;

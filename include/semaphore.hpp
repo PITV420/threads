@@ -1,21 +1,18 @@
 //
-//  threads.hpp
+//  semaphore.hpp
 //  threads
 //
 //  Created by Piotr Cieślik on 17/12/24.
 //
 
-#ifndef threads_h
-#define threads_h
+#ifndef semaphore_h
+#define semaphore_h
 
 #include "threadsDefs.hpp"
 
 namespace Threads
 {
-    class SemaRep
-    {
-
-    };
+    
 }
 
 #endif

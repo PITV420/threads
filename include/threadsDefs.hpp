@@ -53,7 +53,8 @@
 
 #if defined(THREADS_WINOS)
 #elif defined(THREADS_MACOS)
-#include <pthread.h>
+	#include <pthread.h>
+	#include <dispatch/dispatch.h>
 #elif defined(THREADS_LINUXOS)
 #elif defined(THREADS_FREEBSDOS)
 #elif defined(THREADS_STM32OS)
@@ -61,8 +62,6 @@
 
 namespace Threads
 {
-    typedef void* ThreadHandle_t;
-
 #if defined(THREADS_WINOS)
 
 #elif defined(THREADS_MACOS)
@@ -70,12 +69,28 @@ namespace Threads
 	typedef pthread_cond_t native_cond_t;
 	typedef pthread_t native_thread_handle_t;
 	typedef pthread_key_t native_tls_key_t;
+	typedef dispatch_semaphore_t native_sema_t;
 #elif defined(THREADS_LINUXOS)
 #elif defined(THREADS_FREEBSDOS)
 #elif defined(THREADS_STM32OS)
 #else
     #error "Unknown OS!"
 #endif
+
+    typedef void* ThreadHandle_t;
+	typedef int64_t MicrosecondTime;
+	const MicrosecondTime kThreadWaitForever = 0x7FFFFFFFFFFFFFFFLL;
+	const int kForeverInMilliseconds = 0x7FFFFFFF;
+
+	typedef uint64_t RawCPUtime;
+
+	typedef enum eThreadErrorCode
+	{
+		kNoThreadError = 0,
+		kMutexReasonMismatch,
+		kMutexNotLocked,
+		kMutexNotOwned
+	} ThreadErrorCode;
 }
 
 #endif /* threadsDef_h */
