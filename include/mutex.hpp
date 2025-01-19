@@ -12,7 +12,24 @@
 
 namespace Threads
 {
-    class MutexRep;
+    class MutexRep
+	{
+	private:
+		const char* cName;
+		bool bAlwaysWaitForever;
+		uint32_t iLockCount;
+		const char* cReason[16];
+		native_thread_handle_t nOwner;
+		native_mutex_t nPlatformMutex;
+	public:
+		MutexRep(const char* name, bool locksWaitsForever);
+		void Reset(const char* name, bool lockWaitsForever);
+		bool Lock(const char* reason, MicrosecondTime waitTime);
+		ThreadErrorCode Unlock(const char* reason);
+		bool IsLockByThisThread();
+		~MutexRep();
+	};
+
 
     class Mutex
     {

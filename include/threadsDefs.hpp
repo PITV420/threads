@@ -76,9 +76,10 @@ namespace Threads
 #else
     #error "Unknown OS!"
 #endif
-
+	typedef int32_t longInt;
+	typedef int64_t extraLongInt;
     typedef void* ThreadHandle_t;
-	typedef int64_t MicrosecondTime;
+	typedef extraLongInt MicrosecondTime;
 	const MicrosecondTime kThreadWaitForever = 0x7FFFFFFFFFFFFFFFLL;
 	const int kForeverInMilliseconds = 0x7FFFFFFF;
 

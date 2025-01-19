@@ -6,6 +6,10 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		C8D005F52D32975E00A31CAA /* main.cpp in Sources */ = {isa = PBXBuildFile; fileRef = C8D005F42D32975E00A31CAA /* main.cpp */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXCopyFilesBuildPhase section */
 		C8442A952D2A91B9004D91CF /* CopyFiles */ = {
 			isa = PBXCopyFilesBuildPhase;
@@ -25,6 +29,7 @@
 		C8513B5F2D2AC195000F3A93 /* threadPtr.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threadPtr.hpp; sourceTree = "<group>"; };
 		C8513B602D2AC195000F3A93 /* threads.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threads.hpp; sourceTree = "<group>"; };
 		C8C350C72D2A931C00E2B38F /* threadsDefs.hpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.h; path = threadsDefs.hpp; sourceTree = "<group>"; };
+		C8D005F42D32975E00A31CAA /* main.cpp */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.cpp.cpp; path = main.cpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +76,7 @@
 		C8C350C92D2A931C00E2B38F /* src */ = {
 			isa = PBXGroup;
 			children = (
+				C8D005F42D32975E00A31CAA /* main.cpp */,
 			);
 			name = src;
 			path = /Users/pitv/Documents/XCODE/plants_watersystem/threads/src;
@@ -136,6 +142,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				C8D005F52D32975E00A31CAA /* main.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

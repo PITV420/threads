@@ -52,7 +52,8 @@ namespace Threads
     };
 
     typedef class ThreadSafe<short> ThreadSafeInt16;
-    
+    typedef class ThreadSafe<longInt> ThreadSafeLong;
+    typedef class ThreadSafe<extraLongInt> ThreadSafeExtraLong;
 }
 
 #endif

@@ -12,10 +12,7 @@
 
 namespace Threads
 {
-    class SemaRep
-    {
-
-    };
+    
 }
 
 #endif

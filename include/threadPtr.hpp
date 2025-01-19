@@ -10,6 +10,7 @@
 
 #include "message.hpp"
 #include "threadsDefs.hpp"
+#include "threadSafe.hpp"
 
 namespace Threads
 {
@@ -27,9 +28,9 @@ namespace Threads
     {
         virtual int Count() = 0;
 		virtual int Size() = 0;
-		virtual bool MessageIsInQueue(int64_t messageNumber) = 0;
-		virtual bool Insert(Message* msg, bool sendToAllThreadsFlag, int64_t messageNumber) = 0;
-		virtual int RemoveNext(Message** msg, int64_t* messageNumber, bool* sendToAllThreadsFlag, Message** msg2, int64_t* messageNumber2, bool* sendToAllThreadsFlag2, int64_t waitTime, int nativeObjectCount, ThreadHandle_t *objectList, MessageFilterRtn filter) = 0;
+		virtual bool MessageIsInQueue(extraLongInt messageNumber) = 0;
+		virtual bool Insert(Message* msg, bool sendToAllThreadsFlag, extraLongInt messageNumber) = 0;
+		virtual int RemoveNext(Message** msg, extraLongInt* messageNumber, bool* sendToAllThreadsFlag, Message** msg2, extraLongInt* messageNumber2, bool* sendToAllThreadsFlag2, extraLongInt waitTime, int nativeObjectCount, ThreadHandle_t *objectList, MessageFilterRtn filter) = 0;
 		virtual void ClearSendToAllMode() = 0;
 		virtual bool AllowsMultipleReaders() const;
 		virtual bool AllowsMultipleWriters() const;
@@ -76,6 +77,8 @@ namespace Threads
 
 	class Thread
 	{
+	private:
+		ThreadSafeLong iRefCount;
 	protected:
 		Thread();
 	public:
@@ -95,14 +98,14 @@ namespace Threads
 	private:
 		Thread* iPointee;
 	public:
-		ThreadPtr( Thread* realPtr = NULL);
-		ThreadPtr( const ThreadPtr& rhs);
-		ThreadPtr & operator=( const ThreadPtr& rhs);
-		bool operator ==( const ThreadPtr& rhs);
-		bool operator !=( const ThreadPtr& rhs);
+		ThreadPtr(Thread* realPtr = NULL);
+		ThreadPtr(const ThreadPtr& rhs);
+		ThreadPtr& operator=(const ThreadPtr& rhs);
+		bool operator==(const ThreadPtr& rhs);
+		bool operator!=(const ThreadPtr& rhs);
 		~ThreadPtr();
-		Thread*  operator ->() const;
-		Thread&  operator *() const;
+		Thread* operator->() const;
+		Thread& operator*() const;
 		bool IsNull() const;
 	};
 }
