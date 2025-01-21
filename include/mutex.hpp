@@ -46,7 +46,7 @@ namespace Threads
 
 		ThreadErrorCode Unlock(const char *reason = NULL);
 		bool IsLockedByThisThread();
-		void SetCooperativeWaits( bool makeAboutToBlockCallsWhenWaiting);
+		void SetCooperativeWaits(bool makeAboutToBlockCallsWhenWaiting);
     };
 
     class MutexTenure

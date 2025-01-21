@@ -76,10 +76,12 @@ namespace Threads
 #else
     #error "Unknown OS!"
 #endif
+	typedef void* NativeHandle_t;
 	typedef int32_t longInt;
 	typedef int64_t extraLongInt;
     typedef void* ThreadHandle_t;
 	typedef extraLongInt MicrosecondTime;
+	typedef uint64_t RawCPUTime;
 	const MicrosecondTime kThreadWaitForever = 0x7FFFFFFFFFFFFFFFLL;
 	const int kForeverInMilliseconds = 0x7FFFFFFF;
 
@@ -92,6 +94,14 @@ namespace Threads
 		kMutexNotLocked,
 		kMutexNotOwned
 	} ThreadErrorCode;
+
+	const int kNormalPriority = 0;		// No changes from OS default
+	const int kIdlePriority = 999;
+	const int kExtraLowPriority = 1000;
+	const int kLowPriority = 1001;
+	const int kRegularPriority = 1002;
+	const int kHighPriority = 1003;
+	const int kExtraHighPriority = 1004;
 }
 
 #endif /* threadsDef_h */
